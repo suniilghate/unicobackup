@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         $data = []; 
         $faker = Faker::create(); 
         $aGrades = [[1],[1,3],[1,2],[1,3,2],[2,3],[3,2,1]];
-        foreach (range(1,200) as $index) { 
+        foreach (range(1,20000) as $index) { 
             $data[] = [ 
                 'name' => $faker->name, 
                 'email' => $faker->email, 
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
                 'updated_at' => now()->toDateTimeString(), 
             ]; 
         }
-        $chunks = array_chunk($data, 25); 
+        $chunks = array_chunk($data, 1000); 
         foreach($chunks as $chunk){ 
             DB::table('users')->insert($chunk); 
         }
